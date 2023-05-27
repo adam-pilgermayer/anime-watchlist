@@ -1,0 +1,29 @@
+:root {
+	--color-1: #38b6ff;
+}
+
+.burger {
+	border: none;
+}
+
+.burger:is(:focus, :focus-visible, :focus-within) {
+	border: none;
+	outline: none;
+	box-shadow: none;
+}
+
+.hover-color:hover {
+	color: var(--color-1) !important;
+}
+
+@media (min-width: 576px) {
+	.floating-navbar {
+		position: fixed;
+		top: 1.25rem;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 85%;
+		max-width: 750px;
+		border-radius: 5px;
+	}
+}
