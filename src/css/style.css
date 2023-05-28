@@ -1,5 +1,7 @@
 :root {
-	--color-1: #38b6ff;
+	--color-1: rgb(56, 182, 255);
+	--color-1-opacity: rgba(56, 182, 255, 0.5);
+	--color-light: #fafafa;
 }
 
 .burger {
@@ -12,8 +14,16 @@
 	box-shadow: none;
 }
 
-.hover-color:hover {
-	color: var(--color-1) !important;
+.nav-item:first-child {
+	border-top: 2px solid var(--color-1-opacity);
+}
+
+.nav-link {
+	color: var(--color-light);
+}
+
+.nav-link:hover {
+	color: var(--color-light);
 }
 
 @media (min-width: 576px) {
@@ -25,5 +35,13 @@
 		width: 85%;
 		max-width: 750px;
 		border-radius: 5px;
+	}
+
+	.nav-item:first-child {
+		border-top: none;
+	}
+
+	.nav-link:hover {
+		color: var(--color-1);
 	}
 }
