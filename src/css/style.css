@@ -2,6 +2,60 @@
 	--color-1: rgb(56, 182, 255);
 	--color-1-opacity: rgba(56, 182, 255, 0.5);
 	--color-light: #fafafa;
+	--color-light-bg: #e7e9fb;
+	--color-dark-bg: #0a1625;
+
+	--radius-0: 0;
+	--radius-1: 5px;
+}
+
+body {
+	background-color: var(--color-light-bg);
+	min-width: 300px;
+}
+
+header {
+	padding-top: 5.3rem;
+}
+
+.gradient-text {
+	background: #0f80ee;
+	background: -webkit-linear-gradient(45deg, #91eaf1 0%, #0f80ee 50%, #681688 100%);
+	background: linear-gradient(45deg, #39f2ff, #8664f7);
+	background-size: 100%;
+	background-repeat: repeat;
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+.cont-dark {
+	background: rgb(0, 45, 89);
+	background: radial-gradient(
+		circle at top right,
+		rgba(0, 45, 89, 1) -9%,
+		rgba(0, 40, 79, 1) 0%,
+		rgba(1, 23, 45, 1) 54%,
+		rgba(0, 0, 0, 1) 100%
+	);
+	color: var(--color-light);
+}
+
+.dynamic-border-sm {
+	border-radius: var(--radius-0);
+}
+
+.dynamic-border-md {
+	border-radius: var(--radius-0);
+}
+
+.text-blue {
+	color: var(--color-1);
+}
+
+.navbar {
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
 }
 
 .burger {
@@ -12,6 +66,10 @@
 	border: none;
 	outline: none;
 	box-shadow: none;
+}
+
+.burger-icon {
+	color: #38b6ff;
 }
 
 .nav-item:first-child {
@@ -27,14 +85,26 @@
 }
 
 @media (min-width: 576px) {
+	.dynamic-border-sm {
+		border-radius: var(--radius-1);
+	}
+}
+
+@media (min-width: 768px) {
+	header {
+		padding-top: 9.5rem;
+	}
+
+	.dynamic-border-md {
+		border-radius: var(--radius-1);
+	}
+
 	.floating-navbar {
-		position: fixed;
-		top: 1.25rem;
+		top: 2rem;
 		left: 50%;
 		transform: translateX(-50%);
 		width: 85%;
 		max-width: 750px;
-		border-radius: 5px;
 	}
 
 	.nav-item:first-child {
