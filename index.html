@@ -15,17 +15,18 @@
 			crossorigin="anonymous"></script>
 		<link rel="stylesheet" href="./src/css/style.css" />
 	</head>
-	<body>
+	<body class="js-page" data-name="home">
 		<nav
-			class="navbar fixed-top floating-navbar bg-dark navbar-expand-md dynamic-border-md"
-			data-bs-theme="dark">
+			class="navbar fixed-top py-0 floating-navbar bg-dark navbar-expand-md dynamic-border-md"
+			data-bs-theme="dark"
+			role="navigation">
 			<div class="container-fluid">
-				<a class="navbar-brand" href="#">
-					<img
-						src="./src/assets/AWL-logo.png"
-						alt="anime watchlist logo"
-						height="60px" />
-				</a>
+				<img
+					class="navbar-brand"
+					src="./src/assets/AWL-logo.png"
+					alt="anime watchlist logo"
+					height="70px"
+					data-load-page="home" />
 				<button
 					class="navbar-toggler burger"
 					type="button"
@@ -39,48 +40,40 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav ms-auto fs-5">
 						<li class="nav-item">
-							<a class="nav-link" aria-current="page" href="#">Search</a>
+							<a
+								class="nav-link"
+								data-load-page="search"
+								data-bs-toggle="collapse"
+								data-bs-target=".navbar-collapse.show"
+								href="#"
+								>Search</a
+							>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Popular</a>
+							<a
+								class="nav-link"
+								data-load-page="popular"
+								data-bs-toggle="collapse"
+								data-bs-target=".navbar-collapse.show"
+								href="#"
+								>Popular</a
+							>
 						</li>
 						<li class="nav-item">
-							<a href="#" class="nav-link">My List</a>
+							<a
+								href="#"
+								class="nav-link"
+								data-load-page="myList"
+								data-bs-toggle="collapse"
+								data-bs-target=".navbar-collapse.show"
+								>My List</a
+							>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
-		<header>
-			<section
-				class="container-md p-0 ps-md-5 py-5 py-md-0 dynamic-border-md cont-dark">
-				<div
-					class="d-flex flex-column flex-md-row align-items-center text-center text-md-start">
-					<div class="container">
-						<h1 class="fw-bold mb-lg-5">Anime WatchList</h1>
-						<h4 class="fw-light">
-							Track your favourite
-							<strong class="fw-bold gradient-text">Anime</strong>
-						</h4>
-						<h4 class="fw-light">and make your own list.</h4>
-						<div class="pt-4">
-							<button class="btn btn-info rounded-3 px-3 m-3 ms-md-0">
-								Search Anime
-							</button>
-							<button class="btn btn-outline-info rounded-3">
-								What's Popular
-							</button>
-						</div>
-					</div>
-					<div class="container pe-0 header-img-container">
-						<img
-							class="img-fluid d-none d-md-block"
-							src="./src/assets/image-1.webp"
-							alt="an anime character holding swords and covered with flames" />
-					</div>
-				</div>
-			</section>
-		</header>
+		<header></header>
 		<main></main>
 		<footer></footer>
 		<script

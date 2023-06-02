@@ -1,3 +1,7 @@
+/***************************************
+---------------VARIABLES----------------
+***************************************/
+
 :root {
 	--color-1: rgb(56, 182, 255);
 	--color-1-opacity: rgba(56, 182, 255, 0.5);
@@ -9,18 +13,18 @@
 	--radius-1: 5px;
 }
 
-body {
-	background-color: var(--color-light-bg);
-	min-width: 300px;
-}
-
-header {
-	padding-top: 5.3rem;
-}
+/***************************************
+---------------UTILITIES----------------
+***************************************/
 
 .gradient-text {
 	background: #0f80ee;
-	background: -webkit-linear-gradient(45deg, #91eaf1 0%, #0f80ee 50%, #681688 100%);
+	background: -webkit-linear-gradient(
+		45deg,
+		#91eaf1 0%,
+		#0f80ee 50%,
+		#681688 100%
+	);
 	background: linear-gradient(45deg, #39f2ff, #8664f7);
 	background-size: 100%;
 	background-repeat: repeat;
@@ -50,12 +54,47 @@ header {
 	border-radius: var(--radius-0);
 }
 
-.text-blue {
-	color: var(--color-1);
+.slide-title {
+	cursor: pointer;
 }
+
+.slide-title:hover > .arrow {
+	transform: translateX(3px);
+}
+
+.arrow {
+	transition: transform 300ms ease;
+}
+
+/**********************************
+---------------BASE----------------
+**********************************/
+
+body {
+	background-color: var(--color-light-bg);
+	min-width: 300px;
+}
+
+header,
+main {
+	opacity: 100%;
+	transition: opacity 500ms ease;
+}
+
+.reload {
+	opacity: 0;
+}
+
+/************************************
+---------------NAVBAR----------------
+************************************/
 
 .navbar {
 	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+}
+
+.navbar-brand {
+	cursor: pointer;
 }
 
 .burger {
@@ -84,20 +123,30 @@ header {
 	color: var(--color-light);
 }
 
-@media (min-width: 576px) {
-	.dynamic-border-sm {
-		border-radius: var(--radius-1);
-	}
+/************************************
+---------------HEADER----------------
+************************************/
+
+header {
+	padding-top: 5.3rem;
 }
 
+/***************************************
+---------------TABLET MQ----------------
+***************************************/
+
 @media (min-width: 768px) {
-	header {
-		padding-top: 9.5rem;
-	}
+	/***************************************
+---------------UTILITIES----------------
+***************************************/
 
 	.dynamic-border-md {
 		border-radius: var(--radius-1);
 	}
+
+	/************************************
+---------------NAVBAR----------------
+************************************/
 
 	.floating-navbar {
 		top: 2rem;
@@ -113,5 +162,13 @@ header {
 
 	.nav-link:hover {
 		color: var(--color-1);
+	}
+
+	/************************************
+---------------HEADER----------------
+************************************/
+
+	header {
+		padding-top: 9.5rem;
 	}
 }
