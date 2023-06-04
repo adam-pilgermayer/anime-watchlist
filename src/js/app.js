@@ -25,21 +25,26 @@ function initialize() {
 	return ([{ pageName, myList }] = getInitialState());
 }
 
+function reloadPage() {
+	header.classList.add("refresh");
+	main.classList.add("refresh");
+	page.classList.add("actions-disabled");
+
+	setTimeout(() => {
+		renderPage();
+		header.classList.remove("refresh");
+		main.classList.remove("refresh");
+		page.classList.remove("actions-disabled");
+	}, 800);
+}
+
 function setPageName(event) {
 	let elem = event.target;
 
 	if (elem.dataset.hasOwnProperty("loadPage")) {
 		if (pageName !== elem.dataset.loadPage) {
 			pageName = elem.dataset.loadPage;
-
-			header.classList.add("reload");
-			main.classList.add("reload");
-
-			setTimeout(() => {
-				renderPage();
-				header.classList.remove("reload");
-				main.classList.remove("reload");
-			}, 800);
+			reloadPage();
 		}
 	}
 }

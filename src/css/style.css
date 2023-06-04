@@ -66,6 +66,15 @@
 	transition: transform 300ms ease;
 }
 
+.refresh {
+	opacity: 0;
+}
+
+.actions-disabled {
+	pointer-events: none;
+	user-select: none;
+}
+
 /**********************************
 ---------------BASE----------------
 **********************************/
@@ -79,10 +88,6 @@ header,
 main {
 	opacity: 100%;
 	transition: opacity 500ms ease;
-}
-
-.reload {
-	opacity: 0;
 }
 
 /************************************
