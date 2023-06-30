@@ -63,10 +63,10 @@ function selectPage() {
 
 function renderHomeHeader() {
 	return `<section
-    class="container-md p-0 ps-md-5 py-5 py-md-0 dynamic-border-md cont-dark">
+    class="container-md p-0 dynamic-border-md cont-dark">
     <div
         class="d-flex flex-column flex-md-row align-items-center text-center text-md-start">
-        <div class="container">
+        <div class="container p-0 ps-md-5 py-5 py-md-0">
             <h1 class="fw-bold mb-lg-5">Anime WatchList</h1>
             <h4 class="fw-light">
                 Track your favourite
@@ -82,7 +82,7 @@ function renderHomeHeader() {
                 </button>
             </div>
         </div>
-        <div class="container pe-0 header-img-container">
+        <div class="container d-flex justify-content-end pe-0">
             <img
                 class="img-fluid d-none d-md-block"
                 src="./src/assets/image-1.webp"
