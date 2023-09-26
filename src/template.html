@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>AnimeWatchList - HOME</title>
+		<link rel="icon" href="<%= require('./assets/images/favicon.png')%>" />
+	</head>
+	<body>
+		<div id="root">
+			<nav class="navbar">
+				<div class="navbar-logo-box">
+					<a href="/" data-navigo>
+						<img
+							class="navbar-logo"
+							src="<%= require('./assets/images/AWL-logo.png')%>"
+							alt="AnimeWatchList website logo" />
+					</a>
+				</div>
+				<div class="navbar-burger-open js-open-nav">
+					<img
+						src="<%= require('./assets/images/menu.svg')%>"
+						alt="hamburger open button" />
+				</div>
+				<ul class="navbar-list js-collapse">
+					<li class="navbar-burger-close js-close-nav">
+						<img
+							src="<%= require('./assets/images/x.svg')%>"
+							alt="hamburger close button" />
+					</li>
+					<li class="navbar-item">
+						<a class="navbar-link" href="/" data-navigo>Home</a>
+					</li>
+					<li class="navbar-item">
+						<a class="navbar-link" href="/search/anime" data-navigo>Search</a>
+					</li>
+					<li class="navbar-item">
+						<a class="navbar-link" href="/popular" data-navigo>Popular</a>
+					</li>
+					<li class="navbar-item">
+						<a class="navbar-link" href="/mylist" data-navigo>My List</a>
+					</li>
+					<li class="navbar-item">
+						<a class="navbar-link" href="/random/anime" data-navigo>Random</a>
+					</li>
+				</ul>
+			</nav>
+			<header class="header-content"></header>
+			<main class="main-content flow-lg"></main>
+			<footer class="footer">
+				<article class="footer-content wrapper">
+					<section class="footer-top">
+						<nav class="footer-nav">
+							<ul class="footer-nav-list">
+								<li class="footer-elem">
+									<a href="/" class="footer-link" data-navigo>Home</a>
+								</li>
+								<li class="footer-elem">
+									<a href="/search/anime" class="footer-link" data-navigo
+										>Search</a
+									>
+								</li>
+								<li class="footer-elem">
+									<a href="/popular" class="footer-link" data-navigo>Popular</a>
+								</li>
+								<li class="footer-elem">
+									<a href="/mylist" class="footer-link" data-navigo>My List</a>
+								</li>
+								<li class="footer-elem">
+									<a href="/random/anime" class="footer-link" data-navigo
+										>Random</a
+									>
+								</li>
+								<li class="footer-elem">
+									<a href="/attributions" class="footer-link" data-navigo
+										>Attributions</a
+									>
+								</li>
+							</ul>
+						</nav>
+					</section>
+					<section class="footer-bottom">
+						<p class="footer-text">
+							This website is powered by
+							<a href="https://jikan.moe/" target="_blank">Jikan API</a>
+						</p>
+						<p class="footer-text">
+							AnimeWatchList &copy;2023 All Rights Reserved.
+						</p>
+					</section>
+				</article>
+			</footer>
+		</div>
+	</body>
+</html>
