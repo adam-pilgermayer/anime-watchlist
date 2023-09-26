@@ -1,0 +1,42 @@
+@use "mixins" as *;
+
+@include create-font-face(
+	"Kulim Park",
+	"../../assets/fonts/kulimpark/kulimpark-light-webfont",
+	300,
+	normal,
+	woff2 woff
+);
+@include create-font-face(
+	"Kulim Park",
+	"../../assets/fonts/kulimpark/kulimpark-lightitalic-webfont",
+	300,
+	italic,
+	woff2 woff
+);
+@include create-font-face(
+	"Kulim Park",
+	"../../assets/fonts/kulimpark/kulimpark-regular-webfont",
+	400,
+	normal,
+	woff2 woff
+);
+@include create-font-face(
+	"Kulim Park",
+	"../../assets/fonts/kulimpark/kulimpark-semibold-webfont",
+	600,
+	normal,
+	woff2 woff
+);
+
+$ff-main: "Kulim Park", sans-serif;
+$ff-secondary: "Roboto", sans-serif;
+
+$font-sizes: (
+	100: clamp(1.13rem, calc(1.08rem + 0.22vw), 1.25rem),
+	200: clamp(1.27rem, calc(1.09rem + 0.87vw), 1.77rem),
+	300: clamp(1.42rem, calc(1.05rem + 1.87vw), 2.5rem),
+	400: clamp(1.6rem, calc(0.93rem + 3.36vw), 3.53rem),
+	500: clamp(1.8rem, calc(0.69rem + 5.56vw), 5rem),
+	600: clamp(2.03rem, calc(0.28rem + 8.76vw), 7.07rem),
+);

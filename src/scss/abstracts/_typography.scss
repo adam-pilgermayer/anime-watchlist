@@ -1,0 +1,62 @@
+@use "functions" as *;
+@use "mixins" as *;
+
+h1,
+.h1 {
+	font-size: font-size(500);
+}
+
+h2,
+.h2 {
+	font-size: font-size(300);
+}
+
+h3,
+.h3 {
+	font-size: font-size(200);
+}
+
+h4,
+.h4 {
+	font-size: font-size(100);
+}
+
+.paragraph-shrink {
+	max-width: 25ch;
+	font-size: font-size(100);
+}
+
+a {
+	font-size: font-size(100);
+}
+
+@include break-at(md) {
+	h1,
+	.h1 {
+		font-size: font-size(400);
+	}
+
+	h2,
+	.h2 {
+		font-size: font-size(300);
+	}
+
+	h3,
+	.h3 {
+		font-size: font-size(200);
+	}
+
+	h4,
+	.h4 {
+		font-size: font-size(100);
+	}
+
+	.paragraph-shrink {
+		max-width: 25ch;
+		font-size: font-size(100);
+	}
+
+	a {
+		font-size: font-size(100);
+	}
+}

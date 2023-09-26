@@ -1,0 +1,32 @@
+@use "../abstracts/" as *;
+
+.home-header {
+	min-height: 100vh; /* fall-back */
+	min-height: -moz-available;
+	min-height: -webkit-fill-available;
+	min-height: fill-available;
+	padding-block: 10rem;
+	padding-inline: 2rem;
+	text-align: center;
+	background: linear-gradient(
+			0deg,
+			rgba(5, 23, 46, 1) 0%,
+			rgba(5, 23, 46, 0.4) 100%
+		),
+		url("../../assets/images/header_image.webp");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	& :where(h1, p) {
+		text-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+	}
+}
+
+@include break-at(md) {
+	.list-scroll {
+		&:first-child {
+			top: 0;
+		}
+	}
+}

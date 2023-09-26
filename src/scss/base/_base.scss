@@ -1,0 +1,26 @@
+@use "../abstracts/" as *;
+
+* {
+	-webkit-tap-highlight-color: transparent;
+}
+
+body {
+	position: relative;
+	min-height: 100vh;
+	min-width: 350px;
+	font-family: $ff-main;
+	font-weight: 400;
+	font-size: font-size(100);
+	background-color: color(dark, auto);
+	color: color(light, auto);
+}
+
+a {
+	color: color(light, auto);
+	text-decoration: none;
+}
+
+.main-content {
+	padding-bottom: 15rem;
+	padding-top: 5rem;
+}

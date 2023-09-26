@@ -1,0 +1,45 @@
+$neutral-light: hsl(0, 0%, 100%);
+$neutral-dark: hsl(214, 80%, 10%);
+$primary: hsl(216, 100%, 76%);
+$secondary: hsl(215, 58%, 26%);
+$accent: hsl(47, 100%, 60%);
+$svg-filter: brightness(0) saturate(100%) invert(95%) sepia(46%) saturate(3498%)
+	hue-rotate(325deg) brightness(101%) contrast(101%);
+
+$svg-filter-white: brightness(0) saturate(100%) invert(100%) sepia(4%)
+	saturate(14%) hue-rotate(75deg) brightness(104%) contrast(100%);
+
+$palette: (
+	primary: (
+		300: hsl(216, 100%, 76%),
+		400: hsl(216, 100%, 56%),
+		500: hsl(216, 100%, 36%),
+	),
+	secondary: (
+		300: hsl(215, 58%, 66%),
+		400: hsl(215, 58%, 46%),
+		500: hsl(215, 58%, 26%),
+	),
+	accent: (
+		300: hsl(47, 100%, 60%),
+		400: hsl(47, 100%, 40%),
+		500: hsl(47, 100%, 20%),
+	),
+	light: (
+		auto: hsl(0, 0%, 100%),
+	),
+	dark: (
+		auto: hsl(214, 80%, 10%),
+		300: hsl(214, 80%, 8%),
+		tp: hsla(214, 80%, 10%, 40%),
+	),
+	neutral: (
+		100: hsl(0, 0%, 100%),
+		200: hsl(0, 0%, 80%),
+		300: hsl(0, 0%, 60%),
+		400: hsl(0, 0%, 40%),
+		500: hsl(0, 0%, 20%),
+		600: hsl(0, 0%, 10%),
+		700: hsl(0, 0%, 0%),
+	),
+);

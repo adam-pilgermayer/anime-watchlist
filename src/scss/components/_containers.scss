@@ -1,0 +1,6 @@
+.container-flex-col {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	width: min(100% - 3rem, 65ch);
+}

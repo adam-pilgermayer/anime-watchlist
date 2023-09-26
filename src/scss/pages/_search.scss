@@ -1,0 +1,65 @@
+@use "../abstracts/" as *;
+@use "../components/footer" as *;
+@use "../components/buttons" as *;
+
+.search-header {
+	padding-top: 6rem;
+	text-align: center;
+
+	.search-container {
+		display: flex;
+		flex-direction: column;
+		border-radius: 10px;
+		padding-block: 2rem;
+		background-color: color(secondary, 500);
+	}
+
+	.search-row {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.merged-input-submit {
+		display: flex;
+		position: relative;
+		width: min(100% - 2rem, 500px);
+	}
+
+	.search-input {
+		border: none;
+		border-radius: 4px;
+		padding: 0.8rem;
+		padding-right: 3.2rem;
+		width: 100%;
+		font-family: $ff-main;
+		font-size: calc(font-size(100) - 20%);
+		font-weight: 400;
+		color: color(light, auto);
+		background-color: color(dark, auto);
+		outline: 3px solid color(accent, 300);
+
+		&:focus {
+			background-color: color(dark, 300);
+		}
+
+		&::placeholder {
+			font-style: italic;
+			color: color(neutral, 300);
+		}
+	}
+}
+
+.result-count {
+	margin-block: 3rem 1rem;
+}
+
+@include break-at(md) {
+	.search-header {
+		.search-row {
+			flex-direction: row;
+		}
+	}
+}

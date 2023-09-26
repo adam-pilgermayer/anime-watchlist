@@ -1,0 +1,55 @@
+@use "../abstracts/" as *;
+
+.btn {
+	padding: 0.5rem 1rem;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 150ms ease-in-out;
+	user-select: none;
+}
+
+.btn-1-filled {
+	background-color: color(accent, 300);
+	color: color(dark, auto);
+	box-shadow: 0px 2px 5px color(dark, auto);
+
+	&:where(:hover, :focus-visible) {
+		background-color: color(accent, 400);
+	}
+}
+
+.submit-btn {
+	padding: 0.2rem;
+	background-color: color(accent, 300);
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	position: absolute;
+	right: -2px;
+	top: 50%;
+	transform: translateY(-50%);
+
+	&:where(:active, :focus-visible) {
+		background-color: color(accent, 400);
+	}
+}
+
+.filter-btn {
+	background-color: color(dark, tp);
+	padding: 0.4rem;
+
+	&:where(:focus-visible, :active) {
+		background-color: color(dark, auto);
+	}
+
+	& > img {
+		vertical-align: middle;
+	}
+}
+
+@include break-at(md) {
+	.filter-btn {
+		&:hover {
+			background-color: color(dark, auto);
+		}
+	}
+}

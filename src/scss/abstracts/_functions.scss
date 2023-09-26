@@ -1,0 +1,33 @@
+@use "fonts" as *;
+@use "colors" as *;
+
+@function font-size($size) {
+	//@warn map-get($font-sizes, $size);
+
+	@if map-has-key($font-sizes, $size) {
+		$size: map-get($font-sizes, $size);
+		@return $size;
+	}
+
+	@warn "Size of `#{$size}` doesn't exist in font-sizes";
+	@return null;
+}
+
+@function color($color, $tone) {
+	//@warn map-get($palette, $color, $tone);
+
+	@if map-has-key($palette, $color) {
+		$color: map-get($palette, $color);
+
+		@if map-has-key($color, $tone) {
+			$tone: map-get($color, $tone);
+			@return $tone;
+		}
+
+		@warn "unknown tone `#{$tone}` in color";
+		@return null;
+	}
+
+	@warn "unknown color `#{$color}` in palette";
+	@return null;
+}

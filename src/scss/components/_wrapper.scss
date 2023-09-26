@@ -1,0 +1,12 @@
+.wrapper {
+	width: min(100% - 2rem, 85ch);
+	margin-inline: auto;
+}
+
+.flow > * + * {
+	margin-top: 2em;
+}
+
+.flow-lg > * + * {
+	margin-top: 6em;
+}

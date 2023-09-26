@@ -1,0 +1,99 @@
+@use "../abstracts/" as *;
+
+.list {
+	.empty {
+		padding-block: 1rem;
+	}
+
+	.list-title {
+		display: flex;
+		margin-block: 1rem;
+		align-items: center;
+		width: fit-content;
+	}
+
+	& > .list-items {
+		display: flex;
+		gap: 1.4rem;
+	}
+}
+
+.list-scroll {
+	position: relative;
+
+	.right-arrow-icon {
+		transition: margin-left 150ms ease;
+		width: 32px;
+		height: 32px;
+	}
+
+	.list-title:where(:hover, :focus-visible) .right-arrow-icon {
+		margin-left: 5px;
+	}
+
+	.scrollable {
+		overflow-x: scroll;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+		scroll-snap-type: x mandatory;
+	}
+
+	.scrollable::-webkit-scrollbar {
+		display: none;
+	}
+
+	.list-controls {
+		position: absolute;
+		top: 0%;
+		right: 0;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 6rem;
+	}
+
+	.list-to-left,
+	.list-to-right {
+		cursor: pointer;
+		user-select: none;
+
+		& > img {
+			vertical-align: middle;
+			filter: $svg-filter-white;
+			transition: filter 150ms ease-in-out;
+		}
+
+		&:where(:active, :focus-visible) > img {
+			filter: $svg-filter;
+		}
+	}
+}
+
+.list-batch {
+	.list-title {
+		margin-block: 4rem 2rem;
+	}
+
+	.batch {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+	}
+}
+
+@include break-at(md) {
+	.list-scroll {
+		.list-to-left,
+		.list-to-right {
+			&:hover > img {
+				filter: $svg-filter;
+			}
+		}
+	}
+
+	.list-batch {
+		.batch {
+			gap: 3rem;
+		}
+	}
+}

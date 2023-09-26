@@ -1,0 +1,41 @@
+@use "../abstracts/" as *;
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	background-color: color(secondary, 500);
+	text-align: center;
+
+	&-content {
+		display: grid;
+		padding-block: 2rem;
+		place-items: center;
+	}
+
+	&-nav-list {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 1rem;
+		padding-bottom: 1rem;
+	}
+
+	&-link:where(:hover, :focus-visible) {
+		color: color(accent, 300);
+	}
+
+	&-text {
+		color: color(neutral, 200);
+		line-height: 1.8rem;
+		font-size: calc(font-size(100) - 20%);
+
+		a {
+			color: color(accent, 300);
+		}
+
+		a:where(:hover, :focus-visible) {
+			color: color(accent, 400);
+		}
+	}
+}

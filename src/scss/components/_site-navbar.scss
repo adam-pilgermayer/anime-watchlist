@@ -1,0 +1,129 @@
+@use "../abstracts/" as *;
+
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-inline: 2rem 3rem;
+	height: 60px;
+	width: 100%;
+	position: fixed;
+	inset: 0;
+	z-index: 100;
+
+	&::before {
+		content: "";
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		inset: 0;
+		z-index: -10;
+		background-color: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(20px);
+	}
+
+	&-burger-open {
+		cursor: pointer;
+	}
+
+	&-burger-close {
+		height: 36px;
+		width: 36px;
+		align-self: flex-start;
+		box-shadow: 0 0 5px color(light, auto);
+		border-radius: 50%;
+		cursor: pointer;
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	&-logo {
+		height: 60px;
+	}
+
+	&-list {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 2rem;
+		position: absolute;
+		right: -500px;
+		top: 60px;
+		z-index: -10;
+		width: 20ch;
+		height: 100vh;
+		padding: 1rem 2rem;
+		background-color: rgba(0, 0, 0, 0.6);
+		backdrop-filter: blur(20px);
+		transition: right 300ms ease;
+	}
+
+	.show {
+		right: 0;
+	}
+
+	&-item {
+		padding: 0;
+		width: 100%;
+		transition: all 100ms ease-in-out;
+	}
+
+	&-link {
+		padding-block: 1rem;
+		display: block;
+	}
+
+	&-link:where(:hover, :focus-within) {
+		color: color(accent, 300);
+	}
+}
+
+@include break-at(md) {
+	.navbar {
+		&-burger-open {
+			display: none;
+		}
+
+		&-burger-close {
+			display: none;
+		}
+
+		&-list {
+			position: static;
+			flex-direction: row;
+			width: auto;
+			height: 60px;
+			padding: 0;
+			background-color: transparent;
+			backdrop-filter: unset;
+		}
+
+		&-item {
+			width: auto;
+		}
+
+		&-link {
+			position: relative;
+			padding: 0;
+		}
+
+		&-link::after {
+			content: "";
+			display: inline-block;
+			position: absolute;
+			left: 0;
+			top: 1.2rem;
+			margin-top: 5px;
+			width: 0;
+			height: 2px;
+			background-color: white;
+			transition: width 150ms ease;
+		}
+
+		&-link:where(:hover, :focus-within)::after {
+			width: 100%;
+		}
+	}
+}
