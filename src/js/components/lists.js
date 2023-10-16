@@ -5,6 +5,7 @@ import { createIcon } from "../utils";
 import { registEventListener } from "../state";
 import { animeCard } from "./card";
 
+// Scrollable list always contains one set of data (25 items). No extend feature required
 export function scrollableList({ listTitle, titlePath, animeList, isLazy }) {
 	const handleListScrollX = (event) => {
 		const target = event.target;
@@ -25,7 +26,7 @@ export function scrollableList({ listTitle, titlePath, animeList, isLazy }) {
 	};
 
 	const isListEmpty = (list) => {
-		return list.length === 0;
+		return list?.data === undefined || list?.data === null || list.length === 0;
 	};
 
 	const renderInterface = () => {
@@ -60,37 +61,28 @@ export function scrollableList({ listTitle, titlePath, animeList, isLazy }) {
 			</div>
 		`;
 	};
-	const renderCards = (data) => {
+	const renderCards = (list) => {
 		let listContentHTML = "";
-		if (
-			shrinkedAnimeList[0]?.data === null ||
-			shrinkedAnimeList[0]?.data === undefined
-		) {
+
+		if (isListEmpty(list)) {
 			listContentHTML += `<p class="empty">This list is empty 😕</p>`;
 			return listContentHTML;
 		}
 
-		shrinkedAnimeList[0]?.data.map((anime) => {
+		list?.data.map((anime) => {
 			listContentHTML += animeCard(anime, isLazy);
 		});
 		return listContentHTML;
 	};
 
-	const cardLimit = 25;
-	let shrinkedAnimeList = [];
-
-	if (!isListEmpty(animeList)) {
-		shrinkedAnimeList = animeList.slice(0, cardLimit + 1);
-	}
-
 	const controllerInterface = renderInterface();
-	const animeCards = renderCards(shrinkedAnimeList);
+	const animeCards = renderCards(animeList);
 
 	const listElement = document.createElement("section");
 	listElement.classList.add("list", "list-scroll");
 	listElement.innerHTML += `
 		${controllerInterface}
-			<section class="list-items scrollable">
+		<section class="list-items scrollable">
 			${animeCards}
 		</section>`;
 

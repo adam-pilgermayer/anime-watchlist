@@ -1,13 +1,29 @@
 @use "../abstracts/" as *;
 
-.card {
+.card-link {
 	$img-height: 250px;
 	$img-width: 165px;
 	$duration: 150ms;
 	$anim-type: ease-in-out;
 
-	position: relative;
-	cursor: pointer;
+	&:hover {
+		.content-layer {
+			opacity: 1;
+		}
+
+		.anime-card-title {
+			color: color(accent, 300);
+		}
+
+		.icon {
+			scale: 1;
+		}
+	}
+
+	.card {
+		position: relative;
+		cursor: pointer;
+	}
 
 	& :where(.card-img, .content-layer) {
 		height: $img-height;
@@ -26,31 +42,24 @@
 		transition: opacity $duration $anim-type;
 	}
 
-	&:hover :where(.content-layer) {
-		opacity: 100%;
-	}
-
 	.icon {
 		color: color(accent, 300);
 		scale: 0;
 		transition: scale $duration $anim-type;
 	}
 
-	&:hover :where(.icon) {
-		scale: 1;
-	}
-
-	& > figcaption {
+	.anime-card-title {
+		font-size: calc(font-size(100) * 0.8);
+		width: 15ch;
 		overflow: hidden;
-		display: -webkit-box;
-		-webkit-line-clamp: 3;
-		-webkit-box-orient: vertical;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		// other content breaking method
+		//display: -webkit-box;
+		//-webkit-line-clamp: 3;
+		//-webkit-box-orient: vertical;
 		padding-top: 0.5rem;
 		transition: color $duration $anim-type;
-	}
-
-	&:hover > figcaption {
-		color: color(accent, 300);
 	}
 }
 

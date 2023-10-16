@@ -1,0 +1,10 @@
+@use "../abstracts/" as *;
+
+.loading-screen {
+	position: fixed;
+	inset: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 9999;
+	background-color: color(dark, auto);
+}

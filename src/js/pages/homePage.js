@@ -1,53 +1,15 @@
-import loadingSpinnerIcon from "../../assets/images/loading.gif";
-import { createIcon } from "../utils";
 import { state, initializeEventListeners } from "../state";
-import { getTopAnimeList } from "../api";
 import { scrollableList } from "../components/lists";
 
 export default function homePage() {
-	const headerElement = document.querySelector(".header-content");
-	const contentElement = document.querySelector(".main-content");
-
-	const setInitialData = async () => {
-		const delay = (ms = 1000) => new Promise((r) => setTimeout(r, ms));
-
-		if (state.popularList.length !== 0) return;
-		if (state.airingList.length !== 0) return;
-		if (state.upcomingList.length !== 0) return;
-
-		const popularData = await getTopAnimeList({
-			filter: "bypopularity",
-			page: 1,
-		});
-		state.popularList.push(popularData);
-		await delay();
-		const airingData = await getTopAnimeList({ filter: "airing", page: 1 });
-		state.airingList.push(airingData);
-		await delay();
-
-		const upcomingData = await getTopAnimeList({ filter: "upcoming", page: 1 });
-		state.upcomingList.push(upcomingData);
-	};
-
-	const renderSpinner = () => {
-		const spinnerHTML = createIcon(
-			loadingSpinnerIcon,
-			"loading spinner icon",
-			"spinner"
-		);
-		return `<section class="wrapper spinner-box">${spinnerHTML}</section>`;
-	};
-
-	const renderLoader = (selector) => {
-		selector.innerHTML = "";
-		selector.innerHTML += renderSpinner();
-	};
+	const headerElement = document.querySelector(".js-header-content");
+	const contentElement = document.querySelector(".js-main-content");
 
 	const renderHomeHeader = () => {
 		headerElement.innerHTML = "";
 
 		const headerHTML = `
-		<header class="home-header">
+		<section class="home-header">
 			<section class="container-flex-col wrapper flow">
 				<h1 class="h1">Create your unique Anime list</h1>
 				<p class="paragraph-shrink">
@@ -58,59 +20,58 @@ export default function homePage() {
 					Search Anime
 				</a>
 			</section>
-		</header>`;
+		</section>`;
 
 		headerElement.innerHTML = headerHTML;
 	};
 
 	const renderHomeContent = () => {
 		contentElement.innerHTML = "";
+		console.log(state);
+		const listsToRender = [
+			{
+				listTitle: "My List",
+				titlePath: "/mylist",
+				animeList: state.myAnimeList.all,
+				isLazy: false,
+			},
+			{
+				listTitle: "Top Anime",
+				titlePath: "/popular",
+				animeList: state.topList[0],
+				isLazy: true,
+			},
+			{
+				listTitle: "Most Popular",
+				titlePath: "/popular",
+				animeList: state.popularList[0],
+				isLazy: true,
+			},
+			{
+				listTitle: "Top Airing",
+				titlePath: "/popular",
+				animeList: state.airingList[0],
+				isLazy: true,
+			},
+			{
+				listTitle: "Top Upcoming",
+				titlePath: "/popular",
+				animeList: state.upcomingList[0],
+				isLazy: true,
+			},
+		];
 
-		const myAnimeListHTML = scrollableList({
-			listTitle: "My List",
-			titlePath: "/mylist",
-			animeList: state.myAnimeList.all,
-			cardLimit: 25,
-			isLazy: false,
+		listsToRender.map((list) => {
+			const listHTML = scrollableList(list);
+			contentElement.appendChild(listHTML);
 		});
-
-		const popularListHTML = scrollableList({
-			listTitle: "Most Popular",
-			titlePath: "/popular",
-			animeList: state.popularList,
-			cardLimit: 25,
-			isLazy: true,
-		});
-
-		const airingListHTML = scrollableList({
-			listTitle: "Top Airing",
-			titlePath: "/popular",
-			animeList: state.airingList,
-			cardLimit: 25,
-			isLazy: true,
-		});
-
-		const upcomingListHTML = scrollableList({
-			listTitle: "Top Upcoming",
-			titlePath: "/popular",
-			animeList: state.upcomingList,
-			cardLimit: 25,
-			isLazy: true,
-		});
-
-		contentElement.appendChild(myAnimeListHTML);
-		contentElement.appendChild(popularListHTML);
-		contentElement.appendChild(airingListHTML);
-		contentElement.appendChild(upcomingListHTML);
 	};
 
-	const renderHomePage = async () => {
+	const loadHomePage = () => {
 		initializeEventListeners();
 		renderHomeHeader();
-		renderLoader(contentElement);
-		await setInitialData();
 		renderHomeContent();
 	};
 
-	renderHomePage();
+	loadHomePage();
 }

@@ -1,8 +1,8 @@
 import { state, initializeEventListeners } from "../state";
 
 
-const contentElement = document.querySelector(".main-content");
-const headerElement = document.querySelector(".header-content");
+const contentElement = document.querySelector(".js-main-content");
+const headerElement = document.querySelector(".js-header-content");
 
 export default function myListPage() {
 	initializeEventListeners();

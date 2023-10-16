@@ -10,9 +10,9 @@ const API_ENDPOINTS = {
 	genres: "genres/anime",
 };
 
-
 export async function getTopAnimeList({ filter, page }) {
-	const url = `${API_PREFIX}${API_ENDPOINTS.top}?page=${page}&filter=${filter}`;
+	const hasFilter = filter === null || filter.length === 0 ? "" : `&filter=${filter}`;
+	const url = `${API_PREFIX}${API_ENDPOINTS.top}?page=${page}${hasFilter}`;
 	const newAnimeData = await fetchData(url);
 	return newAnimeData;
 }
@@ -42,10 +42,12 @@ export function getSimilarAnime() {}
 async function fetchData(url) {
 	try {
 		const response = await fetch(url);
+		if (!response.ok) {
+			throw new Error("Error in request", response.statusText);
+		}
 		const animeData = await response.json();
 		return animeData;
 	} catch (err) {
-		console.error(err);
-		return err;
+		console.error("Something went wrong!\n", err);
 	}
 }
