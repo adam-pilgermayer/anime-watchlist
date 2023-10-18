@@ -1,37 +1,38 @@
 import { state, initializeEventListeners } from "../state";
 import { getTopAnimeList } from "../api";
-import { createIcon } from "../utils";
-import loadingSpinnerIcon from "../../assets/images/loading.gif";
+
+const animeLists = [
+	{ name: "Top Anime", value: "" },
+	{ name: "Most Popular", value: "bypopularity" },
+	{ name: "Top Airing", value: "airing" },
+	{ name: "Top Upcoming", value: "upcoming" },
+];
+
+let selectedOption = animeLists[0].name;
 
 export default function popularPage() {
-	const headerElement = document.querySelector(".js.header-content");
-	const contentElement = document.querySelector(".js.main-content");
-
-	const animeLists = [
-		{ name: "Top Anime", value: null },
-		{ name: "Most Popular", value: "bypopularity" },
-		{ name: "Top Airing", value: "airing" },
-		{ name: "Top Upcoming", value: "upcoming" },
-	];
+	const headerElement = document.querySelector(".js-header-content");
+	const contentElement = document.querySelector(".js-main-content");
 
 	const renderSelectOptions = (animeLists) => {
 		let optionsHTML = "";
 		animeLists.map((option) => {
+			let isSelected = selectedOption === option.name ? "selected" : "";
 			optionsHTML += `
-				<option value="${option.value}" class="dropdown-menu-option">${option.name}</option>
+				<option ${isSelected} value="${option.value}" class="dropdown-menu-option">${option.name}</option>
 			`;
 		});
 		return optionsHTML;
 	};
 
-	const renderPopularHeader = (currentList) => {
+	const renderPopularHeader = () => {
 		headerElement.innerHTML = "";
 
 		let optionsHTML = renderSelectOptions(animeLists);
 		let headerHTML = `
 			<section class="popular-header">
 				<section class="wrapper container-flex-row space-between">
-					<h3 class="h3">${currentList.name}</h3>
+					<h3 class="h3">${selectedOption}</h3>
 					<label class="input-title">
 						<select name="lists" class="dropdown-menu js-select-anime-list">
 							${optionsHTML}
@@ -57,13 +58,14 @@ export default function popularPage() {
 	const changeView = (event) => {
 		const target = event.target;
 		const listToLoad = animeLists.find((obj) => obj.value === target.value);
-		renderPopularHeader(listToLoad);
+		selectedOption = listToLoad.name;
+		renderPopularHeader();
 		renderPopularContent(listToLoad);
 	};
 
 	const loadPopularPage = async () => {
 		initializeEventListeners();
-		renderPopularHeader(animeLists[0]);
+		renderPopularHeader();
 		await renderPopularContent(animeLists[0]);
 	};
 
